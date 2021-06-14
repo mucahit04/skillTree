@@ -73,9 +73,9 @@
             [formGroupName]="i"
             style="margin-top: 10px"
           >
-            <div class="col-xs-8">
+            <div class="col-md-4">
               <select
-                class="form-control"
+                class="form-select form-select-md mb-3"
                 id="name"
                 formControlName="name"
                 value="select"
@@ -89,14 +89,28 @@
                 </option>
               </select>
             </div>
-            <div class="col-xs-2">
+            <div class="col-md-4">
+              <select
+                class="form-select form-select-md mb-3"
+                id="name"
+                formControlName="degree"
+                value="select"
+              >
+                <option disabled value="null">Choose a level</option>
+                <option value="meh">meh</option>
+                <option value="good">good</option>
+                <option value="expert">expert</option>
+              </select>
+            </div>
+            <!-- <div class="col-md-2">
               <input
                 type="number"
-                class="form-control"
+                class="form-control mb-3"
                 formControlName="degree"
+                placeholder="level"
               />
-            </div>
-            <div class="col-xs-2">
+            </div> -->
+            <div class="col-md-2">
               <button
                 type="button"
                 class="btn btn-danger"

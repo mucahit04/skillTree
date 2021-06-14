@@ -59,7 +59,7 @@ export class MemberEditComponent implements OnInit {
         name: new FormControl(null, Validators.required),
         degree: new FormControl(null, [
           Validators.required,
-          Validators.pattern(/^[1-9]+[0-9]*$/),
+          Validators.required,
         ]),
       })
     );
