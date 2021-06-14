@@ -4,16 +4,18 @@
   routerLinkActive="active"
   class="list-group-item clearfix"
 >
-  <div class="float-md-left">
-    <h4 class="list-group-item-heading">{{ member.name }}</h4>
-    <p class="list-group-item-text">{{ member.company }}</p>
+  <div class="row">
+    <div class="col-md-8">
+      <h4 class="list-group-item-heading">{{ member.name }}</h4>
+      <p class="list-group-item-text">{{ member.company }}</p>
+    </div>
+    <span class="col-md-2">
+      <img
+        [src]="member.imagePath"
+        alt="{{ member.name }}"
+        class="img-responsive mt-2"
+        style="max-height: 60px"
+      />
+    </span>
   </div>
-  <span class="float-md-right">
-    <img
-      [src]="member.imagePath"
-      alt="{{ member.name }}"
-      class="img-responsive"
-      style="max-height: 50px"
-    />
-  </span>
 </a>

@@ -3,23 +3,27 @@
     <form [formGroup]="skillForm" (ngSubmit)="onSubmit()">
       <div class="row">
         <div class="col-xs-12">
-          <div class="btn-toolbar">
+          <div class="d-grid gap-2 d-md-block">
             <button
               type="submit"
-              class="btn btn-success"
+              class="btn btn-success me-1"
               [disabled]="!skillForm.valid"
             >
               Save
             </button>
             <button
               type="button"
-              class="btn btn-danger"
+              class="btn btn-danger me-1"
               (click)="onDeleteSkill()"
               *ngIf="editMode"
             >
               Delete
             </button>
-            <button type="button" class="btn btn-danger" (click)="onCancel()">
+            <button
+              type="button"
+              class="btn btn-danger me-1"
+              (click)="onCancel()"
+            >
               Cancel
             </button>
           </div>
@@ -41,7 +45,7 @@
       </div>
       <div class="row">
         <div class="col-xs-12">
-          <div class="form-group">
+          <div class="form-group mt-2">
             <div class="radio">
               <label
                 ><input
@@ -49,7 +53,8 @@
                   id="skillType"
                   formControlName="type"
                   value="Hardware"
-                />Hardware</label
+                />
+                Hardware</label
               >
             </div>
             <div class="radio">
@@ -63,13 +68,6 @@
                 Software</label
               >
             </div>
-            <!-- <label for="skillType">Type:</label>
-            <input
-              type="text"
-              id="type"
-              formControlName="type"
-              class="form-control"
-            /> -->
           </div>
         </div>
       </div>

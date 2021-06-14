@@ -9,9 +9,9 @@
     </button>
   </div>
 </div>
-<hr />
+<hr *ngIf="isAuthenticated" />
 <div class="row">
-  <div class="col-xs-8">
+  <div class="col-md-9">
     <ul class="list-group">
       <app-skill-item
         *ngFor="let skill of skills; let i = index"
