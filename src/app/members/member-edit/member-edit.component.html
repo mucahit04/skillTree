@@ -1,0 +1,125 @@
+<div class="row">
+  <div class="col-xs-16">
+    <form [formGroup]="memberForm" (ngSubmit)="onSubmit()">
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="btn-toolbar">
+            <button
+              type="submit"
+              class="btn btn-success"
+              [disabled]="!memberForm.valid"
+            >
+              Save
+            </button>
+            <button type="button" class="btn btn-danger" (click)="onCancel()">
+              Cancel
+            </button>
+          </div>
+        </div>
+      </div>
+      <hr />
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input
+              type="text"
+              id="name"
+              formControlName="name"
+              class="form-control"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="imagePath">Image URL</label>
+            <input
+              type="text"
+              id="imagePath"
+              formControlName="imagePath"
+              class="form-control"
+              #imagePath
+            />
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <img [src]="imagePath.value" class="img-responsive" />
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="company">Company</label>
+            <input
+              type="text"
+              id="company"
+              class="form-control"
+              formControlName="company"
+              rows="6"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12" formArrayName="skills">
+          <label for="name">Skills</label>
+          <div
+            class="row"
+            *ngFor="let skillCtrl of controls; let i = index"
+            [formGroupName]="i"
+            style="margin-top: 10px"
+          >
+            <div class="col-xs-8">
+              <select
+                class="form-control"
+                id="name"
+                formControlName="name"
+                value="select"
+              >
+                <option disabled value="null">Please choose a skill</option>
+                <option
+                  *ngFor="let skill of skillList"
+                  value="{{ skill.name }}"
+                >
+                  {{ skill.name }}
+                </option>
+              </select>
+            </div>
+            <div class="col-xs-2">
+              <input
+                type="number"
+                class="form-control"
+                formControlName="degree"
+              />
+            </div>
+            <div class="col-xs-2">
+              <button
+                type="button"
+                class="btn btn-danger"
+                (click)="onDeleteSkill(i)"
+              >
+                X
+              </button>
+            </div>
+          </div>
+          <hr />
+          <div class="row">
+            <div class="col-xs-12">
+              <button
+                type="button"
+                class="btn btn-success"
+                (click)="onAddSkill()"
+              >
+                Add Skill
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

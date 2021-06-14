@@ -1,0 +1,25 @@
+<a
+  *ngIf="isAuthenticated"
+  routerLinkActive="active"
+  class="list-group-item clearfix"
+>
+  <div class="pull-left">
+    <h4 class="list-group-item-heading">{{ skill.name }}</h4>
+  </div>
+  <div class="pull-right">
+    <button
+      type="button"
+      class="btn btn-danger"
+      (click)="onEditSkill(index)"
+      *ngIf="isAuthenticated"
+    >
+      Edit
+    </button>
+  </div>
+</a>
+
+<div *ngIf="!isAuthenticated">
+  <li class="list-group-item">
+    {{ skill.name }}
+  </li>
+</div>

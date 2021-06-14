@@ -1,0 +1,23 @@
+<div class="row">
+  <div class="col-xs-8">
+    <button
+      class="btn btn-success"
+      (click)="onNewSkill()"
+      *ngIf="isAuthenticated"
+    >
+      New Skill
+    </button>
+  </div>
+</div>
+<hr />
+<div class="row">
+  <div class="col-xs-8">
+    <ul class="list-group">
+      <app-skill-item
+        *ngFor="let skill of skills; let i = index"
+        [skill]="skill"
+        [index]="i"
+      ></app-skill-item>
+    </ul>
+  </div>
+</div>

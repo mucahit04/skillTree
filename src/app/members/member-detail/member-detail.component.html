@@ -1,0 +1,58 @@
+<div class="btn-group">
+  <div class="dropdown" appDropdown>
+    <button type="button" class="btn btn-primary dropdown-toggle">
+      Manage member
+    </button>
+    <ul class="dropdown-menu">
+      <li>
+        <a
+          class="dropdown-item"
+          style="cursor: pointer"
+          (click)="onEditmember()"
+          >Edit member</a
+        >
+      </li>
+      <li>
+        <a
+          class="dropdown-item"
+          style="cursor: pointer"
+          (click)="onDeletemember()"
+          >Delete member</a
+        >
+      </li>
+    </ul>
+  </div>
+</div>
+<hr />
+<div class="row">
+  <div class="col-xs-10">
+    <h1>{{ member.name }}</h1>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    {{ member.company }}
+  </div>
+</div>
+<hr />
+<div class="row">
+  <div class="col-xs-12">
+    <label for="company">Skills</label>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Skill</th>
+          <th scope="col">Experience</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let skill of member.skills; let i = index">
+          <th scope="row">{{ i + 1 }}</th>
+          <td>{{ skill.name }}</td>
+          <td>{{ skill.degree }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

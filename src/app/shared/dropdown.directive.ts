@@ -1,0 +1,60 @@
+// import {
+//   Directive,
+//   ElementRef,
+//   HostBinding,
+//   HostListener,
+// } from '@angular/core';
+
+// @Directive({
+//   selector: '[appDropdown]',
+// })
+// export class DropdownDirective {
+//   @HostBinding('class.show') isOpen = false;
+//   @HostListener('click') toggleOpen() {
+//     this.isOpen = !this.isOpen;
+
+//     if (this.isOpen) {
+//       this.elRef.nativeElement
+//         .querySelector('.dropdown-menu')
+//         .classList.add('show');
+//     } else {
+//       this.elRef.nativeElement
+//         .querySelector('.dropdown-menu')
+//         .classList.remove('show');
+//     }
+//   }
+//   constructor(private elRef: ElementRef) {}
+// }
+import {
+  Directive,
+  HostBinding,
+  HostListener,
+  ElementRef,
+  Renderer2,
+} from '@angular/core';
+
+@Directive({
+  selector: '[appDropdown]',
+})
+export class DropdownDirective {
+  @HostBinding('class.show') isOpen = false;
+
+  @HostListener('document:click', ['$event']) toggleOpen(event: Event) {
+    this.isOpen = this.elRef.nativeElement.contains(event.target)
+      ? !this.isOpen
+      : false;
+    this.toggleChild(this.isOpen);
+  }
+
+  constructor(private elRef: ElementRef, private renderer: Renderer2) {}
+
+  toggleChild(isOpen: boolean) {
+    let childDropdown =
+      this.elRef.nativeElement.querySelector('.dropdown-menu');
+    if (isOpen) {
+      this.renderer.addClass(childDropdown, 'show');
+    } else {
+      this.renderer.removeClass(childDropdown, 'show');
+    }
+  }
+}
