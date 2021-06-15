@@ -1,65 +1,49 @@
-<nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light mb-2">
-  <div class="container-fluid">
-    <a routerLink="/" class="navbar-brand">Skill tree</a>
-    <div class="collapse navbar-collapse">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item" routerLinkActive="active" *ngIf="isAuthenticated">
-          <a class="nav-link active" aria-current="page" routerLink="/members"
-            >Members</a
-          >
-        </li>
-        <!-- <li routerLinkActive="active" *ngIf="isAuthenticated">
+<nav
+  class="
+    navbar navbar-expand
+    sticky-top
+    navbar-expand-lg navbar-light
+    bg-light
+    mb-2
+  "
+>
+  <a routerLink="/" class="navbar-brand">Skill tree</a>
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item" routerLinkActive="active" *ngIf="isAuthenticated">
+        <a class="nav-link" routerLink="/members">Members</a>
+      </li>
+      <!-- <li routerLinkActive="active" *ngIf="isAuthenticated">
           <a routerLink="/companies">Companies</a>
         </li> -->
-        <li class="nav-item" routerLinkActive="active" *ngIf="!isAuthenticated">
-          <a class="nav-link active" aria-current="page" routerLink="/auth"
-            >Login/SignUp</a
-          >
-        </li>
-        <li class="nav-item" routerLinkActive="active">
-          <a class="nav-link active" aria-current="page" routerLink="/community"
-            >Community</a
-          >
-        </li>
-        <li class="nav-item" routerLinkActive="active">
-          <a class="nav-link active" aria-current="page" routerLink="/skills"
-            >Skills</a
-          >
-        </li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right" *ngIf="isAuthenticated">
-        <li class="nav-item">
-          <a class="nav-link" style="cursor: pointer" (click)="onLogout()"
-            >Logout</a
-          >
-        </li>
-        <li class="nav-item dropdown" appDropdown>
-          <a
-            style="cursor: pointer"
-            class="nav-link dropdown-toggle"
-            role="button"
-            >Manage <span class="caret"></span
-          ></a>
-          <ul class="dropdown-menu">
-            <li>
-              <a
-                class="dropdown-item"
-                style="cursor: pointer"
-                (click)="onSaveData()"
-                >Save Data</a
-              >
-            </li>
-            <li>
-              <a
-                class="dropdown-item"
-                style="cursor: pointer"
-                (click)="onFetchData()"
-                >Fetch Data</a
-              >
-            </li>
-          </ul>
-        </li>
-      </ul>
-    </div>
+      <li class="nav-item" routerLinkActive="active" *ngIf="!isAuthenticated">
+        <a class="nav-link" routerLink="/auth">Login/SignUp</a>
+      </li>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" routerLink="/community">Community</a>
+      </li>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" routerLink="/skills">Skills</a>
+      </li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right" *ngIf="isAuthenticated">
+      <li class="nav-item">
+        <a class="nav-link" style="cursor: pointer" (click)="onLogout()"
+          >Logout</a
+        >
+      </li>
+    </ul>
   </div>
 </nav>

@@ -47,8 +47,10 @@ export class MemberEditComponent implements OnInit {
   onSubmit() {
     if (this.editMode) {
       this.memberService.updatemember(this.id, this.memberForm.value);
+      this.dtStrgService.storemembers();
     } else {
       this.memberService.addmember(this.memberForm.value);
+      this.dtStrgService.storemembers();
     }
     this.onCancel();
   }
