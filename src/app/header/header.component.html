@@ -1,26 +1,22 @@
 <nav
-  class="
-    navbar navbar-expand
-    sticky-top
-    navbar-expand-lg navbar-light
-    bg-light
-    mb-2
-  "
+  class="navbar sticky-top mr-auto navbar-expand-lg navbar-light bg-light mb-2"
 >
   <a routerLink="/" class="navbar-brand">Skill tree</a>
   <button
-    class="navbar-toggler"
     type="button"
+    class="navbar-toggler"
     data-toggle="collapse"
-    data-target="#navbarSupportedContent"
-    aria-controls="navbarSupportedContent"
-    aria-expanded="false"
-    aria-label="Toggle navigation"
+    (click)="collapsed = !collapsed"
   >
+    >
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+  <div
+    class="collapse navbar-collapse"
+    [class.collapse]="collapsed"
+    (window:resize)="collapsed = true"
+  >
     <ul class="navbar-nav mr-auto">
       <li class="nav-item" routerLinkActive="active" *ngIf="isAuthenticated">
         <a class="nav-link" routerLink="/members">Members</a>
