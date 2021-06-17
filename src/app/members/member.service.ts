@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
+import { UUID } from 'angular2-uuid';
 
 import { Member } from './member.model';
 
@@ -20,22 +21,29 @@ export class MemberService {
     return this.members.slice();
   }
 
-  getmember(index: number) {
-    return this.members[index];
+  getmember(id: string) {
+    return this.members.find((member) => member.uuid == id);
   }
 
   addmember(member: Member) {
+    member.uuid = UUID.UUID();
     this.members.push(member);
+    console.log(member);
     this.membersChanged.next(this.members.slice());
   }
 
-  updatemember(index: number, newmember: Member) {
-    this.members[index] = newmember;
+  updatemember(uuid: string, updatedMember: Member) {
+    let foundIndex = this.members.findIndex((member) => member.uuid == uuid);
+    updatedMember.uuid = uuid;
+    this.members[foundIndex] = updatedMember;
     this.membersChanged.next(this.members.slice());
   }
 
-  deletemember(index: number) {
-    this.members.splice(index, 1);
+  deletemember(index: string) {
+    const newMembers = this.members.filter((member) => {
+      member.uuid !== index;
+    });
+    this.members = newMembers;
     this.membersChanged.next(this.members.slice());
   }
 }

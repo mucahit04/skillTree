@@ -11,7 +11,7 @@ import { MemberService } from '../member.service';
   templateUrl: './member-list.component.html',
   styleUrls: ['./member-list.component.css'],
 })
-export class MemberListComponent implements OnInit, OnDestroy {
+export class MemberListComponent implements OnInit {
   members: Member[];
   subscription: Subscription;
 
@@ -34,9 +34,5 @@ export class MemberListComponent implements OnInit, OnDestroy {
 
   onNewmember() {
     this.router.navigate(['new'], { relativeTo: this.route });
-  }
-
-  ngOnDestroy() {
-    this.subscription.unsubscribe();
   }
 }

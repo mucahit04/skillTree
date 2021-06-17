@@ -14,7 +14,7 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./member-edit.component.css'],
 })
 export class MemberEditComponent implements OnInit {
-  id: number;
+  uuid: string;
   editMode = false;
   memberForm: FormGroup;
   skillList: Skill[] = [];
@@ -30,7 +30,7 @@ export class MemberEditComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe((params: Params) => {
-      this.id = +params['id'];
+      this.uuid = params['id'];
       this.editMode = params['id'] != null;
       this.initForm();
     });
@@ -46,7 +46,7 @@ export class MemberEditComponent implements OnInit {
 
   onSubmit() {
     if (this.editMode) {
-      this.memberService.updatemember(this.id, this.memberForm.value);
+      this.memberService.updatemember(this.uuid, this.memberForm.value);
       this.dtStrgService.storemembers();
     } else {
       this.memberService.addmember(this.memberForm.value);
@@ -59,10 +59,7 @@ export class MemberEditComponent implements OnInit {
     (<FormArray>this.memberForm.get('skills')).push(
       new FormGroup({
         name: new FormControl(null, Validators.required),
-        degree: new FormControl(null, [
-          Validators.required,
-          Validators.required,
-        ]),
+        degree: new FormControl(null),
       })
     );
   }
@@ -82,19 +79,17 @@ export class MemberEditComponent implements OnInit {
     let memberSkills = new FormArray([]);
 
     if (this.editMode) {
-      const member = this.memberService.getmember(this.id);
+      const member = this.memberService.getmember(this.uuid);
       memberName = member.name;
       memberImagePath = member.imagePath;
       memberDescription = member.company;
+
       if (member['skills']) {
         for (let skill of member.skills) {
           memberSkills.push(
             new FormGroup({
               name: new FormControl(skill.name, Validators.required),
-              degree: new FormControl(skill.degree, [
-                Validators.required,
-                Validators.pattern(/^[1-9]+[0-9]*$/),
-              ]),
+              degree: new FormControl(skill.degree, [Validators.required]),
             })
           );
         }

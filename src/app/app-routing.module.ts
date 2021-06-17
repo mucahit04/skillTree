@@ -13,6 +13,9 @@ import { SkillsComponent } from './skills/skills.component';
 import { SkillsEditComponent } from './skills/skills-edit/skills-edit.component';
 import { SkillStartComponent } from './skills/skill-start/skill-start.component';
 import { SkillsResolverService } from './skills/skills-resolver.service';
+import { CommunityMembersComponent } from './community/community-members/community-members.component';
+import { CommunitySkillsComponent } from './community/community-skills/community-skills.component';
+import { CommunityStartComponent } from './community/community-start/community-start.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/members', pathMatch: 'full' },
@@ -38,6 +41,26 @@ const appRoutes: Routes = [
   {
     path: 'community',
     component: CommunityComponent,
+    children: [
+      { path: '', component: CommunityStartComponent },
+      { path: 'company', component: CommunityMembersComponent },
+      {
+        path: 'skills',
+        component: CommunitySkillsComponent,
+        children: [
+          {
+            path: ':id',
+            component: MemberDetailComponent,
+            resolve: [MembersResolverService],
+          },
+          {
+            path: ':id/edit',
+            component: MemberEditComponent,
+            resolve: [MembersResolverService],
+          },
+        ],
+      },
+    ],
   },
   {
     path: 'skills',

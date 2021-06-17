@@ -37,7 +37,6 @@ export class AuthComponent {
 
     authObs.subscribe(
       (resData) => {
-        console.log(resData);
         this.isLoading = false;
         this.error = null;
         this.router.navigate(['/members']);

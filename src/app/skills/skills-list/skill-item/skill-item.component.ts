@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/auth/auth.service';
@@ -10,7 +10,7 @@ import { Skill } from '../../../shared/skill.model';
   templateUrl: './skill-item.component.html',
   styleUrls: ['./skill-item.component.css'],
 })
-export class SkillItemComponent implements OnInit {
+export class SkillItemComponent implements OnInit, OnDestroy {
   @Input() skill: Skill;
   @Input() index: number;
   isAuthenticated = false;
@@ -27,5 +27,8 @@ export class SkillItemComponent implements OnInit {
   }
   onEditSkill(index) {
     this.router.navigate([index + '/edit'], { relativeTo: this.route });
+  }
+  ngOnDestroy() {
+    this.userSub.unsubscribe();
   }
 }

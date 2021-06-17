@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
-import { Member } from '../members/member.model';
 import { MemberService } from '../members/member.service';
 
 @Injectable()

@@ -1,0 +1,40 @@
+<div class="row">
+  <div class="col-md-4 mt-2">
+    <p class="mt-4">Select a skill to see who has that skill.</p>
+    <div class="col-md-12">
+      <select
+        class="form-select form-select-md mb-3"
+        id="name"
+        [(ngModel)]="skill"
+        (ngModelChange)="membersOfSkill()"
+      >
+        <option disabled [ngValue]="null">Please choose a skill</option>
+        <option *ngFor="let skill of allSkills" value="{{ skill.name }}">
+          {{ skill.name }}
+        </option>
+      </select>
+      <hr />
+
+      <div class="row">
+        <div class="col-md-12">
+          <app-member-item
+            *ngFor="let member of hasThisSkill; let i = index"
+            [member]="member"
+            [index]="member.uuid"
+          ></app-member-item>
+        </div>
+      </div>
+
+      <!-- <div class="col-md-4" *ngFor="let member of hasThisSkill">
+        <ul class="list-group">
+          <li class="list-group-item">
+            {{ member.name }}
+          </li>
+        </ul>
+      </div> -->
+    </div>
+  </div>
+  <div class="col-md-8">
+    <router-outlet></router-outlet>
+  </div>
+</div>

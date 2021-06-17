@@ -32,6 +32,10 @@ import { SkillsService } from './skills/skills.service';
 import { SkillsListComponent } from './skills/skills-list/skills-list.component';
 import { SkillItemComponent } from './skills/skills-list/skill-item/skill-item.component';
 import { SkillStartComponent } from './skills/skill-start/skill-start.component';
+import { CommunityMembersComponent } from './community/community-members/community-members.component';
+import { CommunitySkillsComponent } from './community/community-skills/community-skills.component';
+import { CompanySkillsComponent } from './community/company-skills/company-skills.component';
+import { CommunityStartComponent } from './community/community-start/community-start.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +62,10 @@ import { SkillStartComponent } from './skills/skill-start/skill-start.component'
     SkillsListComponent,
     SkillItemComponent,
     SkillStartComponent,
+    CommunityMembersComponent,
+    CommunitySkillsComponent,
+    CompanySkillsComponent,
+    CommunityStartComponent,
   ],
   imports: [
     BrowserModule,

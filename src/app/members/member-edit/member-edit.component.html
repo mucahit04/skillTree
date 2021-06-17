@@ -76,13 +76,13 @@
             <div class="col-md-4">
               <select
                 class="form-select form-select-md mb-3"
-                id="name"
+                id="{{ i }}"
                 formControlName="name"
                 value="select"
               >
                 <option disabled value="null">Please choose a skill</option>
                 <option
-                  *ngFor="let skill of skillList"
+                  *ngFor="let skill of skillList; let i = index"
                   value="{{ skill.name }}"
                 >
                   {{ skill.name }}
@@ -92,7 +92,7 @@
             <div class="col-md-4">
               <select
                 class="form-select form-select-md mb-3"
-                id="name"
+                id="skillDegree+{{ i }}"
                 formControlName="degree"
                 value="select"
               >

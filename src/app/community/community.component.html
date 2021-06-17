@@ -1,39 +1,31 @@
-<!-- <div class="row">
-  <div class="col-xs-12">
-    <ul class="list-group">
-      <li class="list-group-item" *ngFor="let member of members; let i = index">
-        {{ member.name }} -
-        <ul>
-          <li *ngFor="let skill of members[i].skills">
-            {{ skill.name }} - {{ skill.degree }}
-          </li>
-        </ul>
-      </li>
-    </ul>
-  </div>
-</div> -->
-
 <div class="col-xs-12">
-  <label for="community">Community Skill Tree</label>
-  <table
-    class="table table-hover"
-    *ngFor="let member of members; let i = index"
+  <div
+    class="btn-group"
+    role="group"
+    aria-label="Basic radio toggle button group"
   >
-    <thead>
-      <tr>
-        <th scope="col">Name</th>
-        <th scope="col" *ngFor="let skill of member.skills; let i = index">
-          {{ skill.name }}
-        </th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">{{ member.name }}</th>
-        <td *ngFor="let skill of member.skills; let i = index">
-          {{ skill.degree }}
-        </td>
-      </tr>
-    </tbody>
-  </table>
+    <input
+      type="radio"
+      class="btn-check"
+      name="btnradio"
+      id="skills"
+      autocomplete="off"
+      (click)="onSkills()"
+    />
+    <label class="btn btn-outline-primary" for="skills">Skills</label>
+
+    <input
+      type="radio"
+      class="btn-check"
+      name="btnradio"
+      id="company"
+      autocomplete="off"
+      (click)="onCompany()"
+    />
+    <label class="btn btn-outline-primary" for="company">Companies</label>
+  </div>
+</div>
+
+<div class="col-md-10">
+  <router-outlet></router-outlet>
 </div>

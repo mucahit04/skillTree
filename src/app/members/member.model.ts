@@ -5,17 +5,19 @@ export class Member {
   public company: string;
   public imagePath: string;
   public skills: Skill[];
-  public wantedSkills: Skill[];
+  public uuid: string;
 
   constructor(
     name: string,
     company: string,
     imagePath: string,
-    skills: Skill[]
+    skills: Skill[],
+    uuid: string
   ) {
     this.name = name;
     this.company = company;
     this.imagePath = imagePath;
     this.skills = skills;
+    this.uuid = uuid;
   }
 }

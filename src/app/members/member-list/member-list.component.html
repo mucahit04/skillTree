@@ -7,9 +7,9 @@
 <div class="row">
   <div class="col-md-12">
     <app-member-item
-      *ngFor="let member of members; let i = index"
+      *ngFor="let member of members"
       [member]="member"
-      [index]="i"
+      [index]="member.uuid"
     ></app-member-item>
   </div>
 </div>

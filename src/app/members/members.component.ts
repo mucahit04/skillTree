@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Member } from './member.model';
 import { MemberService } from './member.service';
@@ -8,7 +8,7 @@ import { MemberService } from './member.service';
   templateUrl: './members.component.html',
   styleUrls: ['./members.component.css'],
 })
-export class MembersComponent implements OnInit {
+export class MembersComponent implements OnInit, OnDestroy {
   subscription: Subscription;
   members: Member[];
 
@@ -21,5 +21,8 @@ export class MembersComponent implements OnInit {
         this.members = this.memberService.getmembers();
       }
     );
+  }
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 }

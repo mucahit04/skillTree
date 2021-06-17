@@ -44,10 +44,11 @@ export class SkillsListComponent implements OnInit, OnDestroy {
     this.router.navigate(['new'], { relativeTo: this.route });
   }
 
-  ngOnDestroy() {
-    this.subscription.unsubscribe();
-  }
   onStoreSkills() {
     this.dtStrgService.storeSkills();
+  }
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+    this.userSub.unsubscribe();
   }
 }

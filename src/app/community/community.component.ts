@@ -1,31 +1,19 @@
-import { Component, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
-import { Member } from '../members/member.model';
-import { MemberService } from '../members/member.service';
-import { DataStorageService } from '../shared/data-storage.service';
-import { CommunityService } from './community.service';
+import { Component } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+
 @Component({
   selector: 'app-community',
   templateUrl: './community.component.html',
   styleUrls: ['./community.component.css'],
 })
-export class CommunityComponent implements OnInit {
-  members: Member[];
-  subscription: Subscription;
+export class CommunityComponent {
+  constructor(private router: Router, private route: ActivatedRoute) {}
 
-  constructor(
-    private communityService: CommunityService,
-    private memberService: MemberService,
-    private dtStrgService: DataStorageService
-  ) {}
+  onSkills() {
+    this.router.navigate(['skills'], { relativeTo: this.route });
+  }
 
-  ngOnInit() {
-    this.dtStrgService.fetchmembers().subscribe();
-    this.subscription = this.memberService.membersChanged.subscribe(
-      (members: Member[]) => {
-        this.members = members;
-      }
-    );
-    this.members = this.memberService.getmembers();
+  onCompany() {
+    this.router.navigate(['company'], { relativeTo: this.route });
   }
 }

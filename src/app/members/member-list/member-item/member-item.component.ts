@@ -9,7 +9,7 @@ import { Member } from '../../member.model';
 })
 export class MemberItemComponent implements OnInit {
   @Input() member: Member;
-  @Input() index: number;
+  @Input() index: string;
 
   ngOnInit() {}
 }

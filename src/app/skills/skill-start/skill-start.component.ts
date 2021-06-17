@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/auth/auth.service';
 
@@ -7,7 +7,7 @@ import { AuthService } from 'src/app/auth/auth.service';
   templateUrl: './skill-start.component.html',
   styleUrls: ['./skill-start.component.css'],
 })
-export class SkillStartComponent implements OnInit {
+export class SkillStartComponent implements OnInit, OnDestroy {
   isAuthenticated = false;
   private userSub: Subscription;
 
@@ -17,5 +17,9 @@ export class SkillStartComponent implements OnInit {
     this.userSub = this.authService.user.subscribe((user) => {
       this.isAuthenticated = !!user; // if check, user is null or exist?
     });
+  }
+
+  ngOnDestroy() {
+    this.userSub.unsubscribe();
   }
 }

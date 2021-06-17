@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { AuthService } from 'src/app/auth/auth.service';
 
 import { Member } from '../member.model';
 import { MemberService } from '../member.service';
@@ -9,30 +11,38 @@ import { MemberService } from '../member.service';
   templateUrl: './member-detail.component.html',
   styleUrls: ['./member-detail.component.css'],
 })
-export class MemberDetailComponent implements OnInit {
+export class MemberDetailComponent implements OnInit, OnDestroy {
   member: Member;
-  id: number;
+  id: string;
+  isAuthenticated = false;
+  private userSub: Subscription;
 
   constructor(
     private MemberService: MemberService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private authService: AuthService
   ) {}
 
   ngOnInit() {
+    this.userSub = this.authService.user.subscribe((user) => {
+      this.isAuthenticated = !!user;
+    });
     this.route.params.subscribe((params: Params) => {
-      this.id = +params['id'];
+      this.id = params['id'];
       this.member = this.MemberService.getmember(this.id);
     });
   }
 
   onEditmember() {
     this.router.navigate(['edit'], { relativeTo: this.route });
-    // this.router.navigate(['../', this.id, 'edit'], {relativeTo: this.route});
   }
 
   onDeletemember() {
     this.MemberService.deletemember(this.id);
     this.router.navigate(['/members']);
+  }
+  ngOnDestroy() {
+    this.userSub.unsubscribe();
   }
 }
