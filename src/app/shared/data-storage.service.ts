@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
-import { exhaustMap, map, take, tap } from 'rxjs/operators';
+import { HttpClient } from '@angular/common/http';
+import { map, tap } from 'rxjs/operators';
 
 import { Member } from '../members/member.model';
 import { MemberService } from '../members/member.service';
-import { AuthService } from '../auth/auth.service';
 import { CompanyService } from '../companies/company.service';
 import { Company } from '../companies/company.model';
 import { Skill } from '../shared/skill.model';
@@ -16,8 +15,7 @@ export class DataStorageService {
     private http: HttpClient,
     private MemberService: MemberService,
     private CompanyService: CompanyService,
-    private skillsService: SkillsService,
-    private authService: AuthService
+    private skillsService: SkillsService
   ) {}
 
   storemembers() {

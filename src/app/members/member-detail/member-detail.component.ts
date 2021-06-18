@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/auth/auth.service';
+import { DataStorageService } from 'src/app/shared/data-storage.service';
 
 import { Member } from '../member.model';
 import { MemberService } from '../member.service';
@@ -21,7 +22,8 @@ export class MemberDetailComponent implements OnInit, OnDestroy {
     private MemberService: MemberService,
     private route: ActivatedRoute,
     private router: Router,
-    private authService: AuthService
+    private authService: AuthService,
+    private dataStorageService: DataStorageService
   ) {}
 
   ngOnInit() {
@@ -40,7 +42,8 @@ export class MemberDetailComponent implements OnInit, OnDestroy {
 
   onDeletemember() {
     this.MemberService.deletemember(this.id);
-    this.router.navigate(['/members']);
+    this.dataStorageService.storemembers();
+    this.router.navigate(['../'], { relativeTo: this.route });
   }
   ngOnDestroy() {
     this.userSub.unsubscribe();

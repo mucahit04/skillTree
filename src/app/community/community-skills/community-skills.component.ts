@@ -41,6 +41,7 @@ export class CommunitySkillsComponent implements OnInit {
     );
     this.members = this.memberService.getmembers();
   }
+
   membersOfSkill() {
     this.hasThisSkill = [];
     for (let i = 0; i < this.members.length; i++) {
