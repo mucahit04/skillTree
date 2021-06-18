@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Member } from 'src/app/members/member.model';
 import { MemberService } from 'src/app/members/member.service';
@@ -21,7 +22,9 @@ export class CommunitySkillsComponent implements OnInit {
   constructor(
     private memberService: MemberService,
     private dtStrgService: DataStorageService,
-    private skillService: SkillsService
+    private skillService: SkillsService,
+    private router: Router,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit() {

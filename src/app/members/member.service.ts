@@ -28,7 +28,6 @@ export class MemberService {
   addmember(member: Member) {
     member.uuid = UUID.UUID();
     this.members.push(member);
-    console.log(member);
     this.membersChanged.next(this.members.slice());
   }
 
@@ -40,10 +39,7 @@ export class MemberService {
   }
 
   deletemember(id: string) {
-    console.log(this.members);
     this.members = this.members.filter((member) => member.uuid !== id);
-
-    console.log(this.members);
     this.membersChanged.next(this.members.slice());
   }
 }

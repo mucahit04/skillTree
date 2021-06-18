@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 
-import { Member } from '../members/member.model';
-import { MemberService } from '../members/member.service';
+import { Member } from '../../members/member.model';
+import { MemberService } from '../../members/member.service';
 import { Company } from './company.model';
 
 @Injectable()

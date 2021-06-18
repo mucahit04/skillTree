@@ -6,7 +6,7 @@ import {
 } from '@angular/router';
 
 import { Company } from './company.model';
-import { DataStorageService } from '../shared/data-storage.service';
+import { DataStorageService } from '../../shared/data-storage.service';
 import { CompanyService } from './company.service';
 
 @Injectable({ providedIn: 'root' })

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
+import { DataStorageService } from 'src/app/shared/data-storage.service';
 
 import { CompanyService } from '../company.service';
 
@@ -17,7 +18,8 @@ export class CompanyEditComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private companyService: CompanyService,
-    private router: Router
+    private router: Router,
+    private dataStorageService: DataStorageService
   ) {}
 
   ngOnInit() {
@@ -31,8 +33,10 @@ export class CompanyEditComponent implements OnInit {
   onSubmit() {
     if (this.editMode) {
       this.companyService.updateCompany(this.id, this.companyForm.value);
+      this.dataStorageService.storeCompanies();
     } else {
       this.companyService.addCompany(this.companyForm.value);
+      this.dataStorageService.storeCompanies();
     }
     this.onCancel();
   }

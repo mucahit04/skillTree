@@ -16,6 +16,10 @@ import { SkillsResolverService } from './skills/skills-resolver.service';
 import { CommunityMembersComponent } from './community/community-members/community-members.component';
 import { CommunitySkillsComponent } from './community/community-skills/community-skills.component';
 import { CommunityStartComponent } from './community/community-start/community-start.component';
+import { CompanyDetailComponent } from './community/companies/company-detail/company-detail.component';
+import { CompanyEditComponent } from './community/companies/company-edit/company-edit.component';
+import { CompaniesComponent } from './community/companies/companies.component';
+import { CompaniesResolverService } from './community/companies/companies-resolver.service';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/members', pathMatch: 'full' },
@@ -39,11 +43,43 @@ const appRoutes: Routes = [
     ],
   },
   {
+    path: 'companies',
+    component: CompaniesComponent,
+    children: [
+      { path: 'new', component: CompanyEditComponent },
+      {
+        path: ':id',
+        component: CompanyDetailComponent,
+        resolve: [CompaniesResolverService],
+      },
+      {
+        path: ':id/edit',
+        component: CompanyEditComponent,
+        resolve: [CompaniesResolverService],
+      },
+    ],
+  },
+  {
     path: 'community',
     component: CommunityComponent,
     children: [
       { path: '', component: CommunityStartComponent },
-      { path: 'company', component: CommunityMembersComponent },
+      {
+        path: 'company',
+        component: CompaniesComponent,
+        children: [
+          {
+            path: ':id',
+            component: CompanyDetailComponent,
+            resolve: [CompaniesResolverService],
+          },
+          {
+            path: ':id/edit',
+            component: CompanyEditComponent,
+            resolve: [CompaniesResolverService],
+          },
+        ],
+      },
       {
         path: 'skills',
         component: CommunitySkillsComponent,

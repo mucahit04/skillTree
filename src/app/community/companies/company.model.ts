@@ -1,4 +1,4 @@
-import { Member } from '../members/member.model';
+import { Member } from '../../members/member.model';
 
 export class Company {
   public name: string;

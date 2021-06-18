@@ -4,8 +4,8 @@ import { map, tap } from 'rxjs/operators';
 
 import { Member } from '../members/member.model';
 import { MemberService } from '../members/member.service';
-import { CompanyService } from '../companies/company.service';
-import { Company } from '../companies/company.model';
+import { CompanyService } from '../community/companies/company.service';
+import { Company } from '../community/companies/company.model';
 import { Skill } from '../shared/skill.model';
 import { SkillsService } from '../skills/skills.service';
 
@@ -55,9 +55,7 @@ export class DataStorageService {
         'https://skilltree-fe6b4-default-rtdb.europe-west1.firebasedatabase.app/skills.json',
         skills
       )
-      .subscribe((response) => {
-        console.log(response);
-      });
+      .subscribe((response) => {});
   }
 
   fetchSkills() {
@@ -82,9 +80,7 @@ export class DataStorageService {
         'https://skilltree-fe6b4-default-rtdb.europe-west1.firebasedatabase.app/companies.json',
         companies
       )
-      .subscribe((response) => {
-        console.log(response);
-      });
+      .subscribe((response) => {});
   }
 
   fetchCompanies() {
