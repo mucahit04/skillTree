@@ -1,0 +1,7 @@
+.comma{
+    display: inline-block;
+}
+
+.comma ~ .comma::before{
+    content:' , ';
+}

@@ -1,0 +1,8 @@
+.comma{
+    display: inline-block;
+    /* margin-right: 1%; */
+}
+
+.comma ~ .comma::before{
+    content:'- '
+}

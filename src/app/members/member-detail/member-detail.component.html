@@ -31,7 +31,12 @@
 </div>
 <div class="row">
   <div class="col-xs-12">
-    {{ member.company }}
+    <p class="comma" *ngFor="let company of member.companies; let i = index">
+      {{ company.name }}
+    </p>
+    <!-- <ul *ngFor="let company of member.companies; let i = index">
+      <li>{{ company.name }}</li>
+    </ul> -->
   </div>
 </div>
 <hr />

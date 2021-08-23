@@ -1,1 +1,12 @@
-<p>company-detail works!</p>
+<p>{{ company.name }}</p>
+<p>{{ company.members }}</p>
+
+<app-member-item
+  *ngFor="let member of members"
+  [member]="member"
+  [index]="member.uuid"
+></app-member-item>
+
+<!-- <ul *ngFor="let member of members; let i = index">
+  <li>{{ member.name }}</li>
+</ul> -->
